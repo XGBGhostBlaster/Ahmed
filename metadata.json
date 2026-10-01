@@ -1,0 +1,6 @@
+{
+  "name": "DOGS Crypto Bot",
+  "description": "Telegram DOGS crypto earn bot with account age rewards, daily claims, quests, and direct JazzCash, EasyPaisa, and TON coin withdrawal & fee integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

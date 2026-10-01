@@ -1,0 +1,56 @@
+package com.example.ui.theme
+
+import android.app.Activity
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
+
+private val DogsColorScheme = darkColorScheme(
+    primary = DogsGold,
+    onPrimary = DogsDarkBackground,
+    primaryContainer = DogsDarkSurfaceElevated,
+    onPrimaryContainer = DogsGoldLight,
+    secondary = TonBlue,
+    onSecondary = TextPrimary,
+    secondaryContainer = DogsDarkSurfaceElevated,
+    onSecondaryContainer = TonBlueLight,
+    tertiary = EasyPaisaGreen,
+    onTertiary = DogsDarkBackground,
+    background = DogsDarkBackground,
+    onBackground = TextPrimary,
+    surface = DogsDarkSurface,
+    onSurface = TextPrimary,
+    surfaceVariant = DogsDarkSurfaceElevated,
+    onSurfaceVariant = TextSecondary,
+    outline = DogsDarkSurfaceBorder,
+    error = ErrorRed
+)
+
+@Composable
+fun DogsCryptoTheme(
+    content: @Composable () -> Unit
+) {
+    val view = LocalView.current
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as? Activity)?.window
+            if (window != null) {
+                window.statusBarColor = DogsDarkBackground.toArgb()
+                window.navigationBarColor = DogsDarkBackground.toArgb()
+                val insetsController = WindowCompat.getInsetsController(window, view)
+                insetsController.isAppearanceLightStatusBars = false
+                insetsController.isAppearanceLightNavigationBars = false
+            }
+        }
+    }
+
+    MaterialTheme(
+        colorScheme = DogsColorScheme,
+        typography = Typography,
+        content = content
+    )
+}
